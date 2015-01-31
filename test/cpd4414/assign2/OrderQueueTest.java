@@ -65,4 +65,22 @@ public class OrderQueueTest {
         assertTrue(Math.abs(result - expResult) < 1000);
     }
     
+     @Test
+    public void testWhenCustomerIdAndNameNotExistThenthrowException(){
+        boolean result=false;
+         OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("","");
+        order.addPurchase(new Purchase("PROD0004", 450));
+        order.addPurchase(new Purchase("PROD0006", 250));
+        try{
+            orderQueue.add(order);     
+        }
+        catch(Exception e){
+            result=true;
+        }
+        assertTrue(result);
+    }
+
 }
+
+
