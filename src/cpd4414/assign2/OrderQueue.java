@@ -57,11 +57,22 @@ public class OrderQueue {
             throw new noTimeReceivedException();
         
     }
+    
+     public void fulfillOrder(Order order){
+         if(order.getTimeProcessed()!=null && order.getTimeReceived()!=null){
+             order.setTimeFulfilled(new Date());
+         }
+         else if(order.getTimeProcessed()==null){
+             throw new noTimeProcessedException();
+         }
+     }
          public class NoCustomerException extends RuntimeException{
      }
          
-             public class NoPurchaseException extends RuntimeException{
+     public class NoPurchaseException extends RuntimeException{
      }
-                     public class noTimeReceivedException extends RuntimeException{
+     public class noTimeReceivedException extends RuntimeException{
+     }
+      public class noTimeProcessedException extends RuntimeException{
      }
 }
