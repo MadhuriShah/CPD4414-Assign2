@@ -37,6 +37,9 @@ public class OrderQueue {
     }
     
     public Order requestOrder(){
+        if(orderQueue.isEmpty())
+            return null;
+        
         return orderQueue.peek();
     }
          public class NoCustomerException extends RuntimeException{

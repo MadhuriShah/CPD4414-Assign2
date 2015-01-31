@@ -106,6 +106,12 @@ public class OrderQueueTest {
         
     }
     
+    @Test
+    public void testWhenRequestOrderAndNoOrderThenReturnNull(){
+          OrderQueue orderQueue = new OrderQueue();
+           Order result1=orderQueue.requestOrder();
+           assertEquals(result1,null);
+    }
     
 }
 
