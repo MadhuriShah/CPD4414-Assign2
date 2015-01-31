@@ -69,8 +69,14 @@ public class OrderQueue {
              throw new noTimeReceivedException();
          }
      }
+     public String report(){
+         if(orderQueue.isEmpty())
+             return "";
+         return "";
+     }
          public class NoCustomerException extends RuntimeException{
      }
+         
          
      public class NoPurchaseException extends RuntimeException{
      }
