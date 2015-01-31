@@ -80,7 +80,19 @@ public class OrderQueueTest {
         }
         assertTrue(result);
     }
-
+      @Test
+    public void testWhenPurchaseListNotExistThenthrowException(){
+        boolean result=false;
+         OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001","ABC Construction");
+        try{
+            orderQueue.add(order);     
+        }
+        catch(Exception e){
+            result=true;
+        }
+        assertTrue(result);
+    }
 }
 
 

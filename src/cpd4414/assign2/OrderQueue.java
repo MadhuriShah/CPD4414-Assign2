@@ -33,4 +33,7 @@ public class OrderQueue {
     }
          public class NoCustomerException extends RuntimeException{
      }
+         
+             public class NoPurchaseException extends RuntimeException{
+     }
 }
