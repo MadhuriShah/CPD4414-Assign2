@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  *
- * @author Len Payne <len.payne@lambtoncollege.ca>
+ * @author Madhuri Shah
  */
 public class Order {
     private String customerId;
