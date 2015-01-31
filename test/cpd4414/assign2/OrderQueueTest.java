@@ -157,14 +157,6 @@ public class OrderQueueTest {
             result=true;
         }
     }
-    
-    @Test
-    public void testWhenRequestReportAndNoOrderThenReturnEmptyString(){
-        OrderQueue orderQueue=new OrderQueue();
-        String result=orderQueue.report();
-        assertEquals(result,"");
-    
-    }
 }
 
 
