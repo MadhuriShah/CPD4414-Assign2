@@ -65,6 +65,9 @@ public class OrderQueue {
          else if(order.getTimeProcessed()==null){
              throw new noTimeProcessedException();
          }
+         else if(order.getTimeReceived()==null){
+             throw new noTimeReceivedException();
+         }
      }
          public class NoCustomerException extends RuntimeException{
      }
