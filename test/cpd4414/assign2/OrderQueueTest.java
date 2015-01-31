@@ -112,7 +112,21 @@ public class OrderQueueTest {
            Order result1=orderQueue.requestOrder();
            assertEquals(result1,null);
     }
-    
+      @Test
+    public void testWhenNoTimeReceivedThenThrowException(){
+        boolean result; 
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001", "ABC Construction");
+        order.addPurchase(new Purchase("PROD0004", 450));
+        order.addPurchase(new Purchase("PROD0006", 250));
+        orderQueue.add(order); 
+        try{
+            orderQueue.processOrder(order);
+        }
+        catch(Exception e){
+            result=true;
+        }
+    }
 }
 
 
