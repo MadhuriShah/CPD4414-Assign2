@@ -120,6 +120,7 @@ public class OrderQueueTest {
         order.addPurchase(new Purchase(1, 450));
         order.addPurchase(new Purchase(2, 250));
         order.setTimeReceived(new Date());
+        orderQueue.add(order);
         orderQueue.processOrder(order);
         Date expresult=new Date();
         assertEquals(expresult,order.getTimeProcessed());
@@ -141,6 +142,19 @@ public class OrderQueueTest {
             result=true;
         }
     }
+     @Test
+      public void testWhenOrderHasTimeProcessedAndAllofPurchaseAreInStockThenTimeFulfilledIsNow(){
+          OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001", "ABC Construction");
+        order.addPurchase(new Purchase(1, 450));
+        order.addPurchase(new Purchase(2, 250));
+        order.setTimeProcessed(new Date());
+        order.setTimeReceived(new Date());
+        orderQueue.fulfillOrder(order);
+        Date expresult=new Date();
+        assertEquals(expresult,order.getTimeFulfilled());
+          
+      }
        @Test
     public void testWhenFulfillOrderAndTimeProcessedNotExistsThenThrowException(){
         boolean result; 

@@ -75,8 +75,17 @@ public class OrderQueue {
     }
     
      public void fulfillOrder(Order order){
+         boolean result;
          if(order.getTimeProcessed()!=null && order.getTimeReceived()!=null){
+               int size=order.getListOfPurchases().size();
+           for(int i=0;i<size;i++){
+               int id=order.getListOfPurchases().get(i).getProductId();
+               int listqty=order.getListOfPurchases().get(i).getQuantity();
+               int qty=Inventory.getQuantityForId(id);
+               if(qty>=listqty)
+                   result=false;
              order.setTimeFulfilled(new Date());
+           }
          }
          else if(order.getTimeProcessed()==null){
              throw new noTimeProcessedException();
