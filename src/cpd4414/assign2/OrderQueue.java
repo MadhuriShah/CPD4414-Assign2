@@ -30,6 +30,7 @@ public class OrderQueue {
     Queue<Order> orderQueue = new ArrayDeque<>();
     List<Order> orderList=new ArrayList();
     
+    
    public void add(Order order) {
         if(order.getCustomerId().isEmpty() && order.getCustomerName().isEmpty())
             throw new NoCustomerException();
@@ -47,12 +48,27 @@ public class OrderQueue {
     }
     
     public void processOrder(Order order){
+        boolean result=true;    
         if(order.getTimeReceived()!= null){
-            order.setTimeProcessed(new Date());
+           int size=order.getListOfPurchases().size();
+           for(int i=0;i<size;i++){
+               int id=order.getListOfPurchases().get(i).getProductId();
+               int listqty=order.getListOfPurchases().get(i).getQuantity();
+               int qty=Inventory.getQuantityForId(id);
+               if(qty>=listqty)
+                   result=false;
+               
+           }
+        
+        if(result)
+              order.setTimeProcessed(new Date());
+//            
+//            String id1=order.getListOfPurchases().get(0).getProductId();
+//                int id2=Integer.valueOf(id1);
             orderQueue.remove(order);
             orderList.add(order);
-            
-        }
+    }    
+        
         else
             throw new noTimeReceivedException();
         
